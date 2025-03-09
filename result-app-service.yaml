@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: result-app-service
+spec:
+  type : NodePort
+  selector:
+    name: result-app
+  ports:
+  - port: 8080
+    targetPort: result-app
+    nodePort: 31000
