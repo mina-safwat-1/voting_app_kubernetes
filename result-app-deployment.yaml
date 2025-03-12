@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: result-app
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: result-app
-        image: kodekloud/examplevotingapp_result:v1
+        image: mina1402/examplevotingapp_result:v4
         ports:
           - containerPort: 80
             name: result-app
