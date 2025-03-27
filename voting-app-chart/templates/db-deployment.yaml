@@ -19,8 +19,19 @@ spec:
         ports:
           - containerPort: 5432
             name: db
+        
         env:
           - name: POSTGRES_USER
             value: postgres
           - name: POSTGRES_PASSWORD
             value: postgres
+      
+        volumeMounts:
+        - name: db-pv
+          mountPath: /var/lib/postgresql/data
+        
+      volumes:
+      - name: db-pv
+        persistentVolumeClaim:
+          claimName: db-pvc
+        
