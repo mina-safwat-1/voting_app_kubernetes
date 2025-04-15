@@ -21,9 +21,15 @@ spec:
           name: db
         env:
         - name: POSTGRES_USER
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: username
         - name: POSTGRES_PASSWORD
-          value: postgres
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: password
         volumeMounts:
         - name: db-pv
           mountPath: /var/lib/postgresql/data
@@ -34,5 +40,4 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 5Gi
-          
+          storage: 1Gi
